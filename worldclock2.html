@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<head>
+<title>News</title>
+<meta http-equiv="Content-Language" content="en-us" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <script language="javascript">
+var t
+function wordTime(){
+ t=0
+ nowDate= new Date()
+ worldClock("London",0)
+ worldClock("New York",-5)
+ worldClock("Milwaukee",-6)
+ worldClock("Los Angeles",-8)
+ worldClock("Tokyo",9)
+ worldClock("Beijing",8)
+ worldClock("Dubai",4)
+ worldClock("Moscow",3)
+ worldClock("Paris",1)
+ setTimeout("wordTime()",1)
+}
+function worldClock(city,diffTime){
+ UTCh= nowDate.getUTCHours()
+ UTCm= nowDate.getUTCMinutes()
+ UTCs= nowDate.getUTCSeconds()
+	if (diffTime < 0) {
+	 UTCh = 24 + UTCh;
+  }
+	if (UTCm < 10) {
+	 UTCm = "0" + UTCm;
+  }
+	if (UTCs < 10) {
+	 UTCs = "0" + UTCs;
+  }
+ with(document){
+ forms[0][t].value=city + "： " + (UTCh+diffTime) + ":" + (UTCm) + ":" + (UTCs)
+ t++
+ }
+}
+</script>
+ </head>
+<body onLoad="wordTime()">
+      World Clock
+      <form name="myForm">
+        <table>
+             <td>
+            <input type="text"><br><input type="text"><br><input type="text"><br>
+            <input type="text"><br><input type="text"><br><input type="text"><br>
+            </td>
+          </table>
+      </form>
+  </body>
